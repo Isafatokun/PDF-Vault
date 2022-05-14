@@ -1,0 +1,50 @@
+<head>
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</head>
+
+<body>
+<H4>Welcome to everipdf.com</H4>
+<br>
+<br>
+
+<form method="get">
+    <input type="text" name="q" placeholder="Search Books..." id="id_search" value="{{query}}">
+</form>
+
+<table class="table">
+    <thead>
+        <th>Book Number</th>
+        <th>Title</th>
+        <th>Author Name</th>
+        <th>Download Pdf</th>
+    </thead>
+
+    {% if books %}
+    <tbody>
+        {% for book in books %}
+    <tr>
+        <td>{{book.id}}</td>
+        <td>{{book.title}}</td>
+        <td>{{book.author_name}}</td>
+        <td><a href="{{book.pdf.url}}">Download</a></td>
+    </tr>
+    </tbody>
+    {% endfor %}
+
+    {% else %}
+    <div class="container">
+        <div class="row">
+            <div class="card-body">
+                <h1 class="card-title">No Results</h1>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</table>
+</body>
